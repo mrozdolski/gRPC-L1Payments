@@ -32,10 +32,10 @@ impl L1Payments for L1Service {
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let addr = "[::1]:50051".parse()?;
-    let btc_service = L1Service::default();
+    let l1_service = L1Service::default();
 
     Server::builder()
-        .add_service(L1PaymentsServer::new(btc_service))
+        .add_service(L1PaymentsServer::new(l1_service))
         .serve(addr)
         .await?;
 
